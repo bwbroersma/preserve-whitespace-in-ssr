@@ -10,12 +10,14 @@ export default {
 	input: 'src/main.js',
 	output: {
 		sourcemap: true,
-		format: 'iife',
+		format: 'cjs',
 		name: 'app',
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
 		svelte({
+			generate: 'ssr',
+			preserveWhitespace: true,
 			// enable run-time checks when not in production
 			dev: !production,
 			// we'll extract any component CSS out into
@@ -46,7 +48,7 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		//production && terser()
 	],
 	watch: {
 		clearScreen: false
